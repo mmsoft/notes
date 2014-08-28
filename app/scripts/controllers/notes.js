@@ -20,19 +20,33 @@ angular.module("notesApp")
 			state: 'primary'
 		}];
 
-		$scope.delete = function(note, index) {
-			$scope.alert = "delete " + note;
+		var self = this;
+
+		this.remove = function(index) {
+			$scope.alert = "delete " + $scope.notes[index].content;
 			$scope.notes.splice(index, 1);
 		};
 
-		$scope.done = function(content) {
-			$scope.alert = content + " is done";
-			angular.forEach($scope.notes, function(note) {
-				if (note.content === content) {
+		this.done = function(index) {
+			var note = $scope.notes[index];
+			$scope.alert = note.content + " is done";
 
-					note.state = "success";
-				}
-			});
+			note.state = "success";
+		};
+
+		$scope.initStatus = function(e, ui, index) {
+			self.initX = e.pageX;
+		};
+
+		$scope.updateStatus = function(e, ui, index) {
+
+			if (e.pageX - self.initX > 200) {
+				self.done(index);
+			}
+
+			if (e.pageX - self.initX < -200 || e.pageX < 30) {
+				self.remove(index);
+			}
 
 		};
 	});

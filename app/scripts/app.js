@@ -1,1 +1,1 @@
-angular.module("notesApp", ['ngTouch']);
+angular.module("notesApp", ['ngTouch','ngDragDrop']);
