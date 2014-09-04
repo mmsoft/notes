@@ -6,12 +6,12 @@
 	<meta name="viewport" content="width=device-width">
 	<title>Notes</title>
 	<link rel="stylesheet" type="text/css" href="../bower_components/bootstrap/dist/css/bootstrap.css">
-
+	<link rel="stylesheet" type="text/css" href="../bower_components/toastr/toastr.css">
 	<link rel="stylesheet" type="text/css" href="styles/app.css"></head>
 <body ng-app="notesApp">
 
 	<div ng-controller="NotesCtrl" class="container">
-		<label id="alert" class="alert alert-info">{{alert}}</label>
+
 		<div class="note panel panel-{{note.state}} " ng-repeat="note in notes" data-drag="true" data-jqyoui-options="{revert: true, opacity:0.6}" jqyoui-draggable="{index: {{$index}}, animate: true, placeholder: false, onStart: 'initStatus($index)', onStop:'updateStatus($index)'}" 		>
 			<div class="panel-heading">{{note.content}}</div>
 		</div>
@@ -22,7 +22,9 @@
 	<script type="text/javascript" src="../lib/jquery.ui.touch-punch.js"></script>
 	<script type="text/javascript" src="../bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="../bower_components/angular-touch/angular-touch.js"></script>
+	<script type="text/javascript" src="../bower_components/toastr/toastr.js"></script>
 	<script type="text/javascript" src="../lib/angular-dragdrop.js"></script>
+
 	<script type="text/javascript" src="scripts/app.js"></script>
 	<script type="text/javascript" src="scripts/controllers/notes.js"></script>
 </body>

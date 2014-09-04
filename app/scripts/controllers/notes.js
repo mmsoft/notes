@@ -23,15 +23,17 @@ angular.module("notesApp")
 		var self = this;
 
 		this.remove = function(index) {
-			$scope.alert = "delete " + $scope.notes[index].content;
+			var msg = "delete " + $scope.notes[index].content;
 			$scope.notes.splice(index, 1);
+			toastr.info(msg);
 		};
 
 		this.done = function(index) {
 			var note = $scope.notes[index];
-			$scope.alert = note.content + " is done";
-
+			var msg = note.content + " is done";
 			note.state = "success";
+			toastr.info(msg);
+
 		};
 
 		$scope.initStatus = function(e, ui, index) {
